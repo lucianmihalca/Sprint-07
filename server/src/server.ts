@@ -1,26 +1,32 @@
 // Importaciones necesarias
 import express from 'express';
 import dotenv from 'dotenv';
-import authRoutes from '../routes/auth.routes';
+import authRoutes from './routes/auth.routes';
+import connectToMongoDB from './db/connectToMongoDB';
 
 // Inicializar Express
 const app = express();
 
-// Configurar dotenv para leer variables de entorno
-dotenv.config({ path: '../.env' }); // Ajusta la ruta si es necesario
-
 // Definir el puerto a utilizar
 const PORT = process.env.PORT || 3000;
 
-// Ruta raíz para verificar que el servidor está funcionando
-app.get('/', (req, res) => {
-  res.send('Hello World 👻 👻');
-});
+// Configurar dotenv para leer variables de entorno
+dotenv.config({ path: '../.env' }); // Ajusta la ruta si es necesario
 
-// Middleware para rutas de autenticación
-app.use('/api/auth', authRoutes);
+// Middlewares:
+app.use(express.json()); // Parsear los body requests como JSON ( de req.body)
+app.use('/api/auth', authRoutes); //
+
+
+// Ruta raíz para verificar que el servidor está funcionando
+// app.get('/', (req, res) => {
+//   res.send('Hello World 👻 👻');
+// });
+
+
 
 // Iniciar el servidor
 app.listen(PORT, () => {
+  connectToMongoDB();
   console.log(`Server is running on port ${PORT}`);
 });
