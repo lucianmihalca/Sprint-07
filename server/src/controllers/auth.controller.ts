@@ -2,6 +2,7 @@ import bcryptjs from 'bcryptjs';
 
 import { Request, Response } from 'express';
 import User from '../models/user.models';
+import generateTokenAndSetCookie from '../utils/generateToken';
 
 export const signup = async (req: Request, res: Response) => {
   try {
@@ -25,20 +26,26 @@ export const signup = async (req: Request, res: Response) => {
     const newUser = new User({
       fullName,
       userName,
-      password,
+      password: hashedPassword,
       gender,
       profilePicture: gender === 'male' ? boyProfilePic : girlProfilePic
     });
 
-    await newUser.save();
+    if (newUser) {
+      // Generate JWT token
+      generateTokenAndSetCookie(newUser._id, res);
+      await newUser.save();
 
-    res.status(200).json({
-      _id: newUser._id,
-      fullName: newUser.fullName,
-      userName: newUser.userName,
-      gender: newUser.gender,
-      profilePicture: newUser.profilePicture
-    });
+      res.status(200).json({
+        _id: newUser._id,
+        fullName: newUser.fullName,
+        userName: newUser.userName,
+        gender: newUser.gender,
+        profilePicture: newUser.profilePicture
+      });
+    } else {
+      res.status(400).json({ error: 'Invalid user data' });
+    }
   } catch (error) {
     if (error instanceof Error) {
       console.log('Error in signup controller', error.message);
@@ -47,11 +54,31 @@ export const signup = async (req: Request, res: Response) => {
   }
 };
 
-export const login = (req: Request, res: Response) => {
-  console.log('loginUser');
-  res.send('loginUser');
+export const login = async (req: Request, res: Response) => {
+  try {
+    const { userName, password } = req.body;
+    const user = await User.findOne({ userName });
+    const isPasswordCorrect = await bcryptjs.compare(password, user?.password || '');
+
+    if (!user || !isPasswordCorrect) {
+      return res.status(400).json({ error: 'Invalid credentials' });
+    }
+    generateTokenAndSetCookie(user._id, res);
+    
+    res.status(200).json({
+      _id: user._id,
+      fullName: user.fullName,
+      userName: user.userName,
+      profilePicture: user.profilePicture
+    });
+  } catch (error) {
+    if (error instanceof Error) {
+      console.log('Error in login controller', error.message);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
 };
-export const logout = (req: Request, res: Response) => {
+export const logout = async (req: Request, res: Response) => {
   console.log('logoutUser');
   res.send('logoutUser');
 };
