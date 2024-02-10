@@ -62,15 +62,17 @@ export const login = async (req: Request, res: Response) => {
 
     if (!user || !isPasswordCorrect) {
       return res.status(400).json({ error: 'Invalid credentials' });
+    } else {
+      // Generate JWT token
+      generateTokenAndSetCookie(user._id, res);
+      res.status(200).json({
+        _id: user._id,
+        fullName: user.fullName,
+        userName: user.userName,
+        gender: user.gender,
+        profilePicture: user.profilePicture
+      });
     }
-    generateTokenAndSetCookie(user._id, res);
-
-    res.status(200).json({
-      _id: user._id,
-      fullName: user.fullName,
-      userName: user.userName,
-      profilePicture: user.profilePicture
-    });
   } catch (error) {
     if (error instanceof Error) {
       console.log('Error in login controller', error.message);
