@@ -1,11 +1,15 @@
 // Importaciones necesarias
 import express from 'express';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
+
 import authRoutes from './routes/auth.routes';
+import messageRoutes from './routes/message.routes';
 import connectToMongoDB from './db/connectToMongoDB';
 
 // Inicializar Express
 const app = express();
+
 
 // Definir el puerto a utilizar
 const PORT = process.env.PORT || 3000;
@@ -15,7 +19,10 @@ dotenv.config({ path: '../.env' }); // Ajusta la ruta si es necesario
 
 // Middlewares:
 app.use(express.json()); // Parsear los body requests como JSON ( de req.body)
-app.use('/api/auth', authRoutes); //
+app.use(cookieParser());
+
+app.use('/api/auth', authRoutes); 
+app.use('/api/messages', messageRoutes); 
 
 
 // Ruta raíz para verificar que el servidor está funcionando

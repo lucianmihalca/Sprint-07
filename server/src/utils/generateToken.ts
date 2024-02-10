@@ -1,8 +1,14 @@
 import jwt from 'jsonwebtoken';
 import { Response } from 'express';
+import { IJwtPayload } from '../interfaces/jwt.playload.interface';
 
 const generateTokenAndSetCookie = (userId: string, res: Response) => {
-  const token = jwt.sign({ userId }, process.env.JWT_SECRET as string, {
+  
+  // Create a payload
+  const playload: IJwtPayload = { userId };
+
+  // Sign the payload with a secret and a expiration time
+  const token = jwt.sign(playload, process.env.JWT_SECRET as string, {
     expiresIn: '15d'
   });
   res.cookie('jwt', token, {
