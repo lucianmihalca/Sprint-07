@@ -5,6 +5,9 @@ export default {
     extend: {
       colors: {
         'blue-login': '#356184'
+      },
+      height: {
+        '0.25': '0.0625rem', // Esto es 1px si 1rem = 16px
       }
     }
   },
