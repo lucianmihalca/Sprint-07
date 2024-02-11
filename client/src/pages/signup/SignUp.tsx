@@ -1,3 +1,5 @@
+// snippet rafce
+
 import GenderCheckBox from './GenderCheckBox';
 
 const SignUp = () => {
