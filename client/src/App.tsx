@@ -1,4 +1,5 @@
 import './App.css';
+import './index.css';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 
