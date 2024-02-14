@@ -1,19 +1,27 @@
 // snippet rafce
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import GenderCheckBox from './GenderCheckBox';
+import GenderRadioButtons from './GenderRadioButtons';
 import { signUpSchema } from '../../validationSchemas/signUpSchema';
 import { signUpFormErrors } from '../../interfaces/signUpError.interfces';
+import { ISingUpLogin } from '../../interfaces/singUpLogin.interface';
 
 const SignUp: React.FC = () => {
-  const [errors, setErrors] = useState<signUpFormErrors>({});
-  const [inputs, setInputs] = useState({
+  // Using Partial to make singUpError interface optional
+  const [errors, setErrors] = useState<Partial<signUpFormErrors>>({});
+  
+  const [inputs, setInputs] = useState<ISingUpLogin>({
     name: '',
     fullName: '',
     password: '',
     confirmPassword: '',
     gender: ''
   });
+
+  // Start Gender Function
+  // const handleCheckboxChange = (gender) => {
+  // setInputs({...inputs, gender });
+  // End Gender Function
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -109,8 +117,8 @@ const SignUp: React.FC = () => {
             {errors.confirmPassword && <p className="text-red-500">{errors.confirmPassword}</p>}
           </div>
 
-          {/*GENDER CHECKBOX GOES HEAR */}
-          <GenderCheckBox />
+          {/*GenderRadioButtons GOES HEAR */}
+          <GenderRadioButtons gender={inputs.gender} setGender={(value: string) => setInputs({ ...inputs, gender: value })} />
 
           <Link to="/login" className="text-sm hover:underline text-white opacity-70 hover:text-black transition duration-700 mt-2 inline-block">
             Alredy have an account?
