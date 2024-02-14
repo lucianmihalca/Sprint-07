@@ -2,26 +2,21 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import GenderRadioButtons from './GenderRadioButtons';
-import { signUpSchema } from '../../validationSchemas/signUpSchema';
+import { signUpSchema } from '../../zod/zodSchema';
 import { signUpFormErrors } from '../../interfaces/signUpError.interfces';
-import { ISingUpLogin } from '../../interfaces/singUpLogin.interface';
+import { ISingUp } from '../../interfaces/singUp.interface';
 
 const SignUp: React.FC = () => {
   // Using Partial to make singUpError interface optional
   const [errors, setErrors] = useState<Partial<signUpFormErrors>>({});
-  
-  const [inputs, setInputs] = useState<ISingUpLogin>({
+
+  const [inputs, setInputs] = useState<ISingUp>({
     name: '',
     fullName: '',
     password: '',
     confirmPassword: '',
     gender: ''
   });
-
-  // Start Gender Function
-  // const handleCheckboxChange = (gender) => {
-  // setInputs({...inputs, gender });
-  // End Gender Function
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,8 +27,8 @@ const SignUp: React.FC = () => {
       name: inputs.name,
       fullName: inputs.fullName,
       password: inputs.password,
-      confirmPassword: inputs.confirmPassword
-      // space for gender
+      confirmPassword: inputs.confirmPassword,
+      gender: inputs.gender
     });
 
     if (!validationResult.success) {
@@ -118,7 +113,10 @@ const SignUp: React.FC = () => {
           </div>
 
           {/*GenderRadioButtons GOES HEAR */}
+
           <GenderRadioButtons gender={inputs.gender} setGender={(value: string) => setInputs({ ...inputs, gender: value })} />
+
+          {errors.gender && <p className="text-red-500">{errors.gender}</p>}
 
           <Link to="/login" className="text-sm hover:underline text-white opacity-70 hover:text-black transition duration-700 mt-2 inline-block">
             Alredy have an account?

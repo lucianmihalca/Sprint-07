@@ -1,8 +1,44 @@
 // snippet rafce
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { signUpSchema } from '../../zod/zodSchema';
+import { ILogin } from '../../interfaces/login.interface';
+import { loginFormErrors } from '../../interfaces/loginError.interfaces';
 
-import { Link } from "react-router-dom";
+const Login: React.FC = () => {
+  const [errors, setErrors] = useState<Partial<loginFormErrors>>({});
+  const [inputs, setInputs] = useState<ILogin>({
+    name: '',
+    password: ''
+  });
 
-const Login = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('Submitted form with data:', inputs);
+
+    // Use Zod to validate the inputs
+    const validationResult = signUpSchema.safeParse({
+      name: inputs.name,
+      password: inputs.password
+    });
+
+    if (!validationResult.success) {
+      // Convertir los errores de Zod en un formato más amigable para la UI
+      const formattedErrors = validationResult.error.issues.reduce((acc: { [key: string]: string }, current) => {
+        acc[current.path[0] as string] = current.message;
+        return acc;
+      }, {});
+
+      setErrors(formattedErrors);
+      return;
+    }
+
+    // Reset the errors
+    setErrors({});
+
+    console.log('Validated data:', validationResult.data);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 ">
@@ -10,20 +46,35 @@ const Login = () => {
           Login <span className="text-blue-login">ChatApp</span>
         </h1>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <div>
             <label className="label p-2">
               <span className="text-base label-text text-white opacity-70">User name</span>
             </label>
-            <input type="text" placeholder="Enter user name" className="w-full input input-bordered h-10 " />
+            <input
+              type="text"
+              placeholder="Enter user name"
+              className="w-full input input-bordered h-10 "
+              value={inputs.name}
+              onChange={e => setInputs({ ...inputs, name: e.target.value })}
+            />
+            {errors.name && <p className="text-red-500">{errors.name}</p>}
           </div>
 
           <div>
             <label className="label">
               <span className="text-base label-text text-white opacity-70">Password</span>
             </label>
-            <input type="password" placeholder="Enter Password" className="w-full input input-bordered h-10" />
+            <input
+              type="password"
+              placeholder="Enter Password"
+              className="w-full input input-bordered h-10"
+              value={inputs.password}
+              onChange={e => setInputs({ ...inputs, password: e.target.value })}
+            />
+            {errors.password && <p className="text-red-500">{errors.password}</p>}
           </div>
+
           <Link to="/signup" className="text-sm hover:underline text-white opacity-70 hover:text-black transition duration-700 mt-2 inline-block">
             {"Don't"} have an account?
           </Link>
@@ -46,7 +97,7 @@ export default Login;
 //           <h1 className="text-3xl font-semibold text-center text-gray-300">
 //             Login <span className="text-blue-login">ChatApp</span>
 //           </h1>
-  
+
 //           <form>
 //             <div>
 //               <label className="label p-2">
@@ -54,7 +105,7 @@ export default Login;
 //               </label>
 //               <input type="text" placeholder="Enter username" className="w-full input input-bordered h-10 " />
 //             </div>
-  
+
 //             <div>
 //               <label className="label">
 //                 <span className="text-base label-text text-white opacity-70">Password</span>
@@ -72,5 +123,5 @@ export default Login;
 //       </div>
 //     );
 //   };
-  
+
 //   export default Login;

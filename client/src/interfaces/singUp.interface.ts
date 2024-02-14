@@ -1,4 +1,4 @@
-export interface ISingUpLogin {
+export interface ISingUp {
     name: string;
     fullName: string;
     password: string;
