@@ -1,5 +1,5 @@
 import React from 'react';
-import { IGenderRadioButtonsProps } from '../../interfaces/gender.radio.buttons.interfces';
+import { IGenderRadioButtonsProps } from '../../interfaces/gender.radio.interfces';
 
 const GenderRadioButtons: React.FC<IGenderRadioButtonsProps> = ({ gender, setGender }) => {
   return (
@@ -15,6 +15,13 @@ const GenderRadioButtons: React.FC<IGenderRadioButtonsProps> = ({ gender, setGen
         <label className="label gap-2 cursor-pointer">
           <span className="label-text text-white opacity-70">Female</span>
           <input type="radio" name="gender" value="Female" checked={gender === 'Female'} onChange={e => setGender(e.target.value)} className="radio border-slate-900" />
+        </label>
+      </div>
+
+      <div className="form-control">
+        <label className="label gap-2 cursor-pointer">
+          <span className="label-text text-white opacity-70">Non-binary</span>
+          <input type="radio" name="gender" value="Non-binary" checked={gender === 'Non-binary'} onChange={e => setGender(e.target.value)} className="radio border-slate-900" />
         </label>
       </div>
     </div>
