@@ -17,8 +17,8 @@ const SignUp: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(inputs);
-    
+    console.log('Submitted form with data:', inputs);
+
     // Use Zod to validate the inputs
     const validationResult = signUpSchema.safeParse({
       name: inputs.name,
@@ -39,7 +39,7 @@ const SignUp: React.FC = () => {
       return;
     }
 
-    // Restablecer los errores si la validación es exitosa
+    // Reset the errors
     setErrors({});
 
     console.log('Validated data:', validationResult.data);
