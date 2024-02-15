@@ -7,23 +7,18 @@ const GenderRadioButtons: React.FC<IGenderRadioButtonsProps> = ({ gender, setGen
       <div className="form-control">
         <label className="label gap-2 cursor-pointer">
           <span className="label-text text-white opacity-70">Male</span>
-          <input type="radio" name="gender" value="Male" checked={gender === 'Male'} onChange={e => setGender(e.target.value)} className="radio border-slate-900" />
+          <input type="radio" name="gender" value="male" checked={gender === 'male'} onChange={e => setGender(e.target.value)} className="radio border-slate-900" />
         </label>
       </div>
 
       <div className="form-control">
         <label className="label gap-2 cursor-pointer">
           <span className="label-text text-white opacity-70">Female</span>
-          <input type="radio" name="gender" value="Female" checked={gender === 'Female'} onChange={e => setGender(e.target.value)} className="radio border-slate-900" />
+          <input type="radio" name="gender" value="female" checked={gender === 'female'} onChange={e => setGender(e.target.value)} className="radio border-slate-900" />
         </label>
       </div>
 
-      <div className="form-control">
-        <label className="label gap-2 cursor-pointer">
-          <span className="label-text text-white opacity-70">Non-binary</span>
-          <input type="radio" name="gender" value="Non-binary" checked={gender === 'Non-binary'} onChange={e => setGender(e.target.value)} className="radio border-slate-900" />
-        </label>
-      </div>
+     
     </div>
   );
 };

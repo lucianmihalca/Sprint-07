@@ -8,7 +8,7 @@ import { loginFormErrors } from '../../interfaces/loginError.interfaces';
 const Login: React.FC = () => {
   const [errors, setErrors] = useState<Partial<loginFormErrors>>({});
   const [inputs, setInputs] = useState<ILogin>({
-    name: '',
+    userName: '',
     password: ''
   });
 
@@ -18,7 +18,7 @@ const Login: React.FC = () => {
 
     // Use Zod to validate the inputs
     const validationResult = signUpSchema.safeParse({
-      name: inputs.name,
+      name: inputs.userName,
       password: inputs.password
     });
 
@@ -55,10 +55,10 @@ const Login: React.FC = () => {
               type="text"
               placeholder="Enter user name"
               className="w-full input input-bordered h-10 "
-              value={inputs.name}
-              onChange={e => setInputs({ ...inputs, name: e.target.value })}
+              value={inputs.userName}
+              onChange={e => setInputs({ ...inputs, userName: e.target.value })}
             />
-            {errors.name && <p className="text-red-500">{errors.name}</p>}
+            {errors.userName && <p className="text-red-500">{errors.userName}</p>}
           </div>
 
           <div>
