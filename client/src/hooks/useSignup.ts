@@ -1,9 +1,11 @@
 import React from 'react';
 import { toast } from 'react-hot-toast';
 import { ISingUp } from '../interfaces/singUp.interface';
+import { useAuthContext } from '../conext/AuthContext';
 
 const useSignup = () => {
   const [loading, setLoading] = React.useState(false);
+  const { setAuthUser } = useAuthContext();
 
   const signup = async ({ userName, fullName, password, confirmPassword, gender }: ISingUp) => {
     const success = handleInputErrors({ userName, fullName, password, confirmPassword, gender });
@@ -27,7 +29,11 @@ const useSignup = () => {
       }
 
       console.log(data);
-      // Aquí puedes redireccionar al usuario o mostrar un mensaje de éxito
+
+      // localstorege
+      localStorage.setItem('chat-user', JSON.stringify(data));
+      // context
+      setAuthUser(data);
       toast.success('Registration successful');
     } catch (error) {
       if (error instanceof Error) {
@@ -53,6 +59,10 @@ function handleInputErrors({ userName, fullName, password, confirmPassword, gend
   }
   if (password.length < 6) {
     toast.error('Password must be at least 6 characters long');
+    return false;
+  }
+  if (!userName.match(/^[a-zA-Z0-9]+$/)) {
+    toast.error('Username must be alphanumeric');
     return false;
   }
   return true;

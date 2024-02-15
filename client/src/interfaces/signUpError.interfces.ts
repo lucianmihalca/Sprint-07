@@ -1,6 +1,6 @@
 // Use Partial to make the interface optional
 
-export interface signUpFormErrors {
+export interface IsignUpFormErrors {
   fullName: string;
   userName: string;
   password: string;
