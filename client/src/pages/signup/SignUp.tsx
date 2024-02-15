@@ -5,26 +5,30 @@ import GenderRadioButtons from './GenderRadioButtons';
 import { signUpSchema } from '../../zod/zodSchema';
 import { signUpFormErrors } from '../../interfaces/signUpError.interfces';
 import { ISingUp } from '../../interfaces/singUp.interface';
+import useSignup from '../../hooks/useSignup';
 
 const SignUp: React.FC = () => {
   // Using Partial to make singUpError interface optional
   const [errors, setErrors] = useState<Partial<signUpFormErrors>>({});
 
   const [inputs, setInputs] = useState<ISingUp>({
-    name: '',
+    userName: '',
     fullName: '',
     password: '',
     confirmPassword: '',
     gender: ''
   });
+  const { loading, signup } = useSignup();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    await signup(inputs);
     console.log('Submitted form with data:', inputs);
 
     // Use Zod to validate the inputs
     const validationResult = signUpSchema.safeParse({
-      name: inputs.name,
+      userName: inputs.userName,
       fullName: inputs.fullName,
       password: inputs.password,
       confirmPassword: inputs.confirmPassword,
@@ -78,10 +82,10 @@ const SignUp: React.FC = () => {
               type="text"
               placeholder="e.g. John"
               className="w-full input input-bordered h-10 "
-              value={inputs.name}
-              onChange={e => setInputs({ ...inputs, name: e.target.value })}
+              value={inputs.userName}
+              onChange={e => setInputs({ ...inputs, userName: e.target.value })}
             />
-            {errors.name && <p className="text-red-500">{errors.name}</p>}
+            {errors.userName && <p className="text-red-500">{errors.userName}</p>}
           </div>
 
           <div>

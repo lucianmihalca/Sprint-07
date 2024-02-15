@@ -1,8 +1,7 @@
 export interface ISingUp {
-    name: string;
-    fullName: string;
-    password: string;
-    confirmPassword: string;
-    gender: string;
-    
+  fullName: string;
+  userName: string;
+  password: string;
+  confirmPassword: string;
+  gender: string;
 }
