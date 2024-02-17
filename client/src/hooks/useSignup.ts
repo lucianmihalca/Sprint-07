@@ -1,7 +1,7 @@
 import React from 'react';
 import { toast } from 'react-hot-toast';
-import { ISingUp } from '../interfaces/singUp.interface';
-import { useAuthContext } from '../conext/AuthContext';
+import { ISingUp } from '../interfaces/signup/signUp.interface';
+import { useAuthContext } from '../context/AuthContext';
 
 const useSignup = () => {
   const [loading, setLoading] = React.useState(false);

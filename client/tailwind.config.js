@@ -8,6 +8,9 @@ export default {
       },
       height: {
         '0.25': '0.0625rem', // Esto es 1px si 1rem = 16px
+      },
+      borderWidth: {
+        '0.5': '0.5px',
       }
     }
   },

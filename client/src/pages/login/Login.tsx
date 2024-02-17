@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { signUpSchema } from '../../zod/zodSchema';
-import { ILogin } from '../../interfaces/login.interface';
-import { loginFormErrors } from '../../interfaces/loginError.interfaces';
+import { ILogin } from '../../interfaces/login/login.interface';
+import { loginFormErrors } from '../../interfaces/login/loginError.interfaces';
 
 const Login: React.FC = () => {
   const [errors, setErrors] = useState<Partial<loginFormErrors>>({});

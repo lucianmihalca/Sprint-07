@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import GenderRadioButtons from './GenderRadioButtons';
 import { signUpSchema } from '../../zod/zodSchema';
-import { IsignUpFormErrors } from '../../interfaces/signUpError.interfces';
-import { ISingUp } from '../../interfaces/singUp.interface';
+import { IsignUpFormErrors } from '../../interfaces/signup/signUpError.interfces';
+import { ISingUp } from '../../interfaces/signup/signUp.interface';
 import useSignup from '../../hooks/useSignup';
 
 const SignUp: React.FC = () => {
@@ -118,16 +118,24 @@ const SignUp: React.FC = () => {
 
           {/*GenderRadioButtons GOES HEAR */}
 
-          <GenderRadioButtons gender={inputs.gender} setGender={(value: string) => setInputs({ ...inputs, gender: value })} />
+          <GenderRadioButtons
+            gender={inputs.gender}
+            setGender={(value: string) => setInputs({ ...inputs, gender: value })}
+          />
 
           {errors.gender && <p className="text-red-500">{errors.gender}</p>}
 
-          <Link to="/login" className="text-sm hover:underline text-white opacity-70 hover:text-black transition duration-700 mt-2 inline-block">
+          <Link
+            to="/login"
+            className="text-sm hover:underline text-white opacity-70 hover:text-black transition duration-700 mt-2 inline-block"
+          >
             Alredy have an account?
           </Link>
 
           <div>
-            <button className="btn btn-block btn-sm mt-2 border border-slate-700">Sign Up</button>
+            <button className="btn btn-block btn-sm mt-2 border border-slate-700" disabled={loading}>
+              {loading ? <span className="loading loading-spinner">Loading...</span> : 'Sign Up'}
+            </button>
           </div>
         </form>
       </div>
