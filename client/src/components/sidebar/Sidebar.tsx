@@ -7,7 +7,7 @@ const Sidebar = () => {
     <div className='border-r border-slate-500 p-4 flex flex-col'>
       {/* 1- SearchInput component */}
       <SearchInput />
-      <div className="divider px-3 bg-black h-0.25"></div>
+      <div className="divider px-0 bg-slate-600 h-0.25"></div>
 
 
       {/* 2- Conversations component */}

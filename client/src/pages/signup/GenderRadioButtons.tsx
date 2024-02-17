@@ -1,5 +1,5 @@
 import React from 'react';
-import { IGenderRadioButtonsProps } from '../../interfaces/gender.radio.interfces';
+import { IGenderRadioButtonsProps } from '../../interfaces/gender/gender.radio.interfces';
 
 const GenderRadioButtons: React.FC<IGenderRadioButtonsProps> = ({ gender, setGender }) => {
   return (
