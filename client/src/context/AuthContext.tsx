@@ -11,7 +11,7 @@ export const AuthContext = createContext<IAuthContext | undefined>(undefined);
 // Hook personalizado para acceder al contexto
 export const useAuthContext = () => {
   const context = useContext(AuthContext);
-  if (context === undefined) {
+  if (!context ) {
     throw new Error('useAuthContext must be used within a AuthProvider');
   }
   return context;

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import GenderRadioButtons from './GenderRadioButtons';
-import { signUpSchema } from '../../zod/zodSchema';
+import { signUpSchema } from '../../zod/zod.signUp';
 import { IsignUpFormErrors } from '../../interfaces/signup/signUpError.interfces';
 import { ISingUp } from '../../interfaces/signup/signUp.interface';
 import useSignup from '../../hooks/useSignup';
@@ -134,7 +134,7 @@ const SignUp: React.FC = () => {
 
           <div>
             <button className="btn btn-block btn-sm mt-2 border border-slate-700" disabled={loading}>
-              {loading ? <span className="loading loading-spinner">Loading...</span> : 'Sign Up'}
+              {loading ? <span className="loading loading-spinner"></span> : 'Sign Up'}
             </button>
           </div>
         </form>
