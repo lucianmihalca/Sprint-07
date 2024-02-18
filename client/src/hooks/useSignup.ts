@@ -7,7 +7,7 @@ const useSignup = () => {
   const [loading, setLoading] = React.useState(false);
   const { setAuthUser } = useAuthContext();
 
-  const signup = async ({ userName, fullName, password, confirmPassword, gender }: ISingUp) => {
+  const signup = async ({ fullName, userName, password, confirmPassword, gender }: ISingUp) => {
     const success = handleInputErrors({ userName, fullName, password, confirmPassword, gender });
     if (!success) {
       setLoading(false);

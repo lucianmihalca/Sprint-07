@@ -61,7 +61,8 @@ export const login = async (req: Request, res: Response) => {
     const isPasswordCorrect = await bcryptjs.compare(password, user?.password || '');
 
     if (!user || !isPasswordCorrect) {
-      return res.status(400).json({ error: 'Invalid credentials' });
+      res.status(400).json({ error: 'Invalid username or password 👻' });
+      return;
     } else {
       // Generate JWT token
       generateTokenAndSetCookie(user._id, res);
@@ -69,7 +70,6 @@ export const login = async (req: Request, res: Response) => {
         _id: user._id,
         fullName: user.fullName,
         userName: user.userName,
-        gender: user.gender,
         profilePicture: user.profilePicture
       });
     }
