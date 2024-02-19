@@ -1,13 +1,13 @@
 import React from 'react';
 import { toast } from 'react-hot-toast';
-import { ISingUp } from '../interfaces/signup/signUp.interface';
+import { ISignUp } from '../interfaces/signup/signUp.interface';
 import { useAuthContext } from '../context/AuthContext';
 
 const useSignup = () => {
   const [loading, setLoading] = React.useState(false);
   const { setAuthUser } = useAuthContext();
 
-  const signup = async ({ fullName, userName, password, confirmPassword, gender }: ISingUp) => {
+  const signup = async ({ fullName, userName, password, confirmPassword, gender }: ISignUp) => {
     const success = handleInputErrors({ userName, fullName, password, confirmPassword, gender });
     if (!success) {
       setLoading(false);
@@ -48,7 +48,7 @@ const useSignup = () => {
 
 export default useSignup;
 
-function handleInputErrors({ userName, fullName, password, confirmPassword, gender }: ISingUp) {
+function handleInputErrors({ userName, fullName, password, confirmPassword, gender }: ISignUp) {
   if (!userName || !fullName || !password || !confirmPassword || !gender) {
     toast.error('Please fill in all fields');
     return false;

@@ -8,6 +8,7 @@ import { Document } from 'mongoose';
  * a otros documentos sin complicaciones de tipo.
  */
 export interface IMessage extends Document {
+  _id?: string;
   senderId: string; // Referencia a User, convertida automáticamente de/para ObjectId por Mongoose
   receiverId: string; // Referencia a User, convertida automáticamente de/para ObjectId por Mongoose
   message: string;

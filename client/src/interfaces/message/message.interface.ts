@@ -4,4 +4,5 @@ export interface IMessage {
   receiverId: string;
   message: string;
   createdAt: string;
+  shouldShake?: boolean;
 }

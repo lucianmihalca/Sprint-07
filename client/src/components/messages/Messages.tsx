@@ -3,10 +3,12 @@ import { useEffect, useRef } from 'react';
 import useGetMessage from '../../hooks/useGetMessage';
 import MessageSkeleton from '../skeletons/MessageSkeleton';
 import Message from './Message';
-
+import useListenMessages from '../../hooks/useListenMessages';
 
 const Messages = () => {
   const { messages, loading } = useGetMessage();
+
+  useListenMessages();
   const lastMessageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

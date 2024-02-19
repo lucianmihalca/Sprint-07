@@ -1,9 +1,7 @@
-import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-import { ISingUp } from '../interfaces/signup/signUp.interface';
+import { createContext, useContext, useState, useEffect } from 'react';
+import { IUser } from '../interfaces/usuario/usuario.interface';
 import { IAuthContext } from '../interfaces/context/auth.context.interface';
-type AuthProviderProps = {
-  children: ReactNode;
-};
+import { AuthProviderProps } from '../interfaces/context/auth.provider.interface'; // Ajustado para importar desde el nuevo archivo
 
 // Crear el contexto con un valor inicial que incluye authUser y setAuthUser
 export const AuthContext = createContext<IAuthContext | undefined>(undefined);
@@ -11,14 +9,14 @@ export const AuthContext = createContext<IAuthContext | undefined>(undefined);
 // Hook personalizado para acceder al contexto
 export const useAuthContext = () => {
   const context = useContext(AuthContext);
-  if (!context ) {
+  if (!context) {
     throw new Error('useAuthContext must be used within a AuthProvider');
   }
   return context;
 };
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [authUser, setAuthUser] = useState<ISingUp | null>(() => {
+  const [authUser, setAuthUser] = useState<IUser | null>(() => {
     const storedUser = localStorage.getItem('chat-user');
     return storedUser ? JSON.parse(storedUser) : null;
   });
