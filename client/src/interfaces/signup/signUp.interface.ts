@@ -1,9 +1,5 @@
-export interface ISingUp {
-  _id ?: string;
-  fullName: string;
-  userName: string;
-  password: string;
+import { IUser } from '../usuario/usuario.interface';
+
+export interface ISignUp extends IUser {
   confirmPassword: string;
-  gender: string;
-  profilePicture?: string;
 }

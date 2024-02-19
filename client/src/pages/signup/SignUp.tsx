@@ -4,14 +4,15 @@ import { Link } from 'react-router-dom';
 import GenderRadioButtons from './GenderRadioButtons';
 import { signUpSchema } from '../../zod/zod.signUp';
 import { IsignUpFormErrors } from '../../interfaces/signup/signUpError.interfces';
-import { ISingUp } from '../../interfaces/signup/signUp.interface';
+import { ISignUp } from '../../interfaces/signup/signUp.interface';
 import useSignup from '../../hooks/useSignup';
 
 const SignUp: React.FC = () => {
   // Using Partial to make singUpError interface optional
   const [errors, setErrors] = useState<Partial<IsignUpFormErrors>>({});
 
-  const [inputs, setInputs] = useState<ISingUp>({
+  const [inputs, setInputs] = useState<ISignUp>({
+    _id: '',
     userName: '',
     fullName: '',
     password: '',

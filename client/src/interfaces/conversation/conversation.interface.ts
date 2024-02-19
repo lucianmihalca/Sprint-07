@@ -1,5 +1,5 @@
 export interface IConversation {
-  _id: number;
+  _id: string;
   fullName: string;
   gender: string;
   profilePicture: string;

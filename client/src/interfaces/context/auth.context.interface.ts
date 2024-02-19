@@ -1,7 +1,7 @@
-import { ISingUp } from '../signup/signUp.interface';
-import React from'react';
+import { IUser } from '../usuario/usuario.interface';
+import { SetStateAction, Dispatch } from 'react';
 
 export interface IAuthContext {
-  authUser: ISingUp | null;
-  setAuthUser: React.Dispatch<React.SetStateAction<ISingUp | null>>;
+  authUser: IUser | null;
+  setAuthUser: Dispatch<SetStateAction<IUser | null>>;
 }
