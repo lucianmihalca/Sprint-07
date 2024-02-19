@@ -9,9 +9,8 @@ import userRoutes from './routes/user.routes';
 
 //
 import connectToMongoDB from './db/connectToMongoDB';
+import { app, server } from './socket/socket';
 
-// Inicializar Express
-const app = express();
 // Definir el puerto a utilizar
 const PORT = process.env.PORT || 3000;
 
@@ -32,7 +31,7 @@ app.use('/api/users', userRoutes);
 // });
 
 // Iniciar el servidor
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   connectToMongoDB();
   console.log(`Server is running on port ${PORT}`);
 });
