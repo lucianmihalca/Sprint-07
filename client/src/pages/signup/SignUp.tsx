@@ -138,6 +138,21 @@ const SignUp: React.FC = () => {
               {loading ? <span className="loading loading-spinner"></span> : 'Sign Up'}
             </button>
           </div>
+
+          <div className="flex items-center justify-center my-4 w-full">
+            <div className="flex-1 h-px bg-gray-400" />
+            <span className="mx-2 text-white">OR</span>
+            <div className="flex-1 h-px bg-gray-400" />
+          </div>
+
+          <button
+            className="flex items-center justify-center bg-white text-black font-bold py-2 px-4 rounded shadow hover:bg-blue-400 mt-2 w-full border border-slate-700"
+            // onClick={handleGoogleSignUp}
+            disabled={loading}
+          >
+            <img src="../google.png" alt="Google logo" className="w-5 h-5 mr-2" />
+            {loading ? <span className="loading loading-spinner"></span> : 'Sign Up with Google'}
+          </button>
         </form>
       </div>
     </div>
