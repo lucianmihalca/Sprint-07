@@ -173,7 +173,6 @@ npm install
 >
 > 1.  ⚡️ signUp (Post)
 >
-> - **Obtener Todos (Tareas)**
 > - **Endpoint:** /signup (GET)
 > - **Descripción:** Crea un nuevo usuario:
 > - **inputs** fullName, userName, password, confirmPassword, gender.
@@ -188,7 +187,6 @@ npm install
 >
 > 2.  ⚡️ login (Post)
 >
-> - **Obtener Todos (Tareas)**
 > - **Endpoint:** /login (GET)
 > - **Descripción:** Crea un nuevo instancia:
 > - **inputs** userName, password.
@@ -202,8 +200,7 @@ npm install
 > [!NOTE]
 >
 > 3.  ⚡️ logOut (Post)
->
-> - **Obtener Todos (Tareas)**
+
 > - **Endpoint:** /logout (GET)
 > - **Descripción:** Crea una nueva instancia de logOut
 > - **Respuestas:**
@@ -215,8 +212,7 @@ npm install
 > [!NOTE]
 >
 > 4.  ⚡️ sendMessage (Post)
->
-> - **Obtener Todos (Tareas)**
+
 > - **Endpoint:** /send/id (POST)
 > - **Descripción:** Crea una nueva instancia de message
 > - **Respuestas:**
@@ -228,8 +224,7 @@ npm install
 > [!NOTE]
 >
 > 4.  ⚡️ getMessage (Get)
->
-> - **Obtener Todos (Tareas)**
+
 > - **Endpoint:** /:id (GET)
 > - **Descripción:** Devuelve un nuevo mensaje
 > - **Respuestas:**
@@ -241,8 +236,7 @@ npm install
 > [!NOTE]
 >
 > 4.  ⚡️ getUserForSidebar (Get)
->
-> - **Obtener Todos (Tareas)**
+
 > - **Endpoint:** / (GET)
 > - **Descripción:** Devuelve un listado de los usuarios
 > - **Respuestas:**
