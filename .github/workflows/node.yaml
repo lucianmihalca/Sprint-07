@@ -1,0 +1,31 @@
+name: 'Node.js Server Setup'
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'server/**'
+
+jobs:
+  setup-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20' # Ajusta esto según las necesidades de tu proyecto
+          cache: 'npm'
+
+      - name: Install server dependencies
+        run: |
+          cd backend
+          npm install
+
+      - name: Build the project
+        run: |
+          cd server
+          npm run build
