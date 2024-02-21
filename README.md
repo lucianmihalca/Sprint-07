@@ -231,7 +231,7 @@ npm run dev
 
 > [!NOTE]
 >
-> 4.  ⚡️ getMessage (Get)
+> 5.  ⚡️ getMessage (Get)
 
 > - **Endpoint:** /:id (GET)
 > - **Descripción:** Devuelve un nuevo mensaje
@@ -243,7 +243,7 @@ npm run dev
 
 > [!NOTE]
 >
-> 4.  ⚡️ getUserForSidebar (Get)
+> 6.  ⚡️ getUserForSidebar (Get)
 
 > - **Endpoint:** / (GET)
 > - **Descripción:** Devuelve un listado de los usuarios
