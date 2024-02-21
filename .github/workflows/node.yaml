@@ -22,7 +22,7 @@ jobs:
 
       - name: Install server dependencies
         run: |
-          cd backend
+          cd server
           npm install
 
       - name: Build the project

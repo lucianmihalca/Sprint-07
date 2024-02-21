@@ -7,9 +7,9 @@
 > Utiliza Socket.io para la comunicación bidireccional en tiempo real entre clientes y servidores web.
 > El proyecto está dividido en dos partes principales:
 >
-> ⚡️ El servidor (server) construido con Node.js
-> ⚡️ Y el cliente (client) desarrollado con React.
-> <br>
+> ⚡️ El servidor (server) construido con Node.js<br>
+> ⚡️ Y el cliente (client) desarrollado con React.<br>
+>
 > Emplearemos Clean Architecture, asegurando un desarrollo escalable y organizado, facilitando la separación de preocupaciones así como adaptaciones y expansiones eficientes en el futuro.
 
 #
@@ -31,7 +31,7 @@
 > [!IMPORTANT]
 > Nivel ⭐️
 >
-> ✅ Login de usuario para acceder a salas de chat.
+> ✅ Login de usuario para acceder a salas de chat.<br>
 > ✅ Persistencia de datos usando MongoDB con Mongoose.
 
 #
@@ -48,18 +48,18 @@
 >
 > ✅ Funcionalidades adicionales:
 >
-> ⚡️ SingUp de usuarios para poder crear un usuario y acceder a salas de chat.
-> ⚡️ Logout de usuarios para cerrar sesión en salas de chat.
-> ⚡️ Campo de búsqueda para filtrar los usuarios en salas de chat.
-> ⚡️ Lista de usuarios en sala de chat.
-> ⚡️ Indicador de usuarios conectados en sala de chat.
-> ⚡️ Notificación de mensaje mediante sonido.
-> ⚡️ Los mensajes enviados se muestran mediante animación de movimiento.
-> ⚡️ Skeleton para los mensajes enviados.
-> ⚡️ Se utiliza Zod para validar los datos de entrada.
-> ⚡️ Se utiliza React-Toastify para mostrar notificaciones.
+> ⚡️ SingUp de usuarios para poder crear un usuario y acceder a salas de chat.<br>
+> ⚡️ Logout de usuarios para cerrar sesión en salas de chat.<br>
+> ⚡️ Campo de búsqueda para filtrar los usuarios en salas de chat.<br>
+> ⚡️ Lista de usuarios en sala de chat.<br>
+> ⚡️ Indicador de usuarios conectados en sala de chat.<br>
+> ⚡️ Notificación de mensaje mediante sonido.<br>
+> ⚡️ Los mensajes enviados se muestran mediante animación de movimiento.<br>
+> ⚡️ Skeleton para los mensajes enviados.<br>
+> ⚡️ Se utiliza Zod para validar los datos de entrada.<br>
+> ⚡️ Se utiliza React-Toastify para mostrar notificaciones.<br>
 >
-> ✅ Uso de TypeScript para el desarrollo del proyecto.
+> ✅ Uso de TypeScript para el desarrollo del proyecto.<br>
 > ✅ Uso de React para el desarrollo del cliente.
 
 #
@@ -114,13 +114,15 @@ git clone https://github.com/LucianMihalca/Sprint-07.git
 **1.1 Configurar el Servidor**<br>
 
 Para instalar todas las dependencias necesarias navega al directorio del servidor:
->
-Navega al directorio del servidor:
+
+> Navega al directorio del servidor:
+
 ```
 cd server
 ```
->
-Instala las dependencias:
+
+> Instala las dependencias:
+
 ```
 npm install
 ```
@@ -152,16 +154,16 @@ npm run server
 Para instalar todas las dependencias necesarias navega al directorio del cliente:
 
 Instala las dependencias:
+
 ```
 cd client
 ```
 
 Ejecuta la aplicación cliente en modo desarrollo:
+
 ```
 npm install
 ```
-
-
 
 #
 
@@ -173,7 +175,7 @@ npm install
 >
 > - **Obtener Todos (Tareas)**
 > - **Endpoint:** /signup (GET)
-> - **Descripción:** Crea un nuevo usuario: 
+> - **Descripción:** Crea un nuevo usuario:
 > - **inputs** fullName, userName, password, confirmPassword, gender.
 > - **Respuestas:**
 >   - **Éxito (200):** Devuelve un arreglo de objetos de los inputs.
@@ -188,7 +190,7 @@ npm install
 >
 > - **Obtener Todos (Tareas)**
 > - **Endpoint:** /login (GET)
-> - **Descripción:** Crea un nuevo instancia: 
+> - **Descripción:** Crea un nuevo instancia:
 > - **inputs** userName, password.
 > - **Respuestas:**
 >   - **Éxito (200):** Devuelve un arreglo de objetos de los inputs.
@@ -203,7 +205,7 @@ npm install
 >
 > - **Obtener Todos (Tareas)**
 > - **Endpoint:** /logout (GET)
-> - **Descripción:** Crea una nueva instancia de logOut 
+> - **Descripción:** Crea una nueva instancia de logOut
 > - **Respuestas:**
 >   - **Éxito (200):** Logged out successfully.
 >   - **Error (500):** Error in logout controller.
@@ -248,5 +250,3 @@ npm install
 >   - **Error (500):** Error in getUserForSidebar controller.
 
 #
-
-
