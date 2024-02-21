@@ -85,7 +85,7 @@ Estos son esenciales para ejecutar y gestionar las dependencias del proyecto.
 Clona el repositorio a tu máquina local usando:
 
 ```
-git clone https://github.com/LucianMihalca/Sprint-07.git
+git clone https://github.com/lucianmihalca/Sprint-07.git
 ```
 
 > [!IMPORTANT]
@@ -167,7 +167,15 @@ npm install
 
 #
 
-**Documentación de los Métodos TodoController**
+**2.2 Para ejecuta el cliente**<br>
+
+Ejecuta el cliente en el puerto 8000
+
+```
+npm run dev
+```
+
+**Documentación de los Métodos**
 
 > [!NOTE]
 >
@@ -188,10 +196,10 @@ npm install
 > 2.  ⚡️ login (Post)
 >
 > - **Endpoint:** /login (GET)
-> - **Descripción:** Crea un nuevo instancia:
+> - **Descripción:** Instancia el login de un usuario que existe en la base de datos:
 > - **inputs** userName, password.
 > - **Respuestas:**
->   - **Éxito (200):** Devuelve un arreglo de objetos de los inputs.
+>   - **Éxito (200):** Login con éxito si el usuario y contraseña son correctos.
 >   - **Error (500):** Internal server error.
 >   - **Error (500):** User already exists.
 
@@ -204,7 +212,7 @@ npm install
 > - **Endpoint:** /logout (GET)
 > - **Descripción:** Crea una nueva instancia de logOut
 > - **Respuestas:**
->   - **Éxito (200):** Logged out successfully.
+>   - **Éxito (200):** Nos redirecciona a login.
 >   - **Error (500):** Error in logout controller.
 
 #
