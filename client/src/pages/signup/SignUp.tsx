@@ -6,13 +6,13 @@ import { signUpSchema } from '../../zod/zod.signUp';
 import { IsignUpFormErrors } from '../../interfaces/signup/signUpError.interfces';
 import { ISignUp } from '../../interfaces/signup/signUp.interface';
 import useSignup from '../../hooks/useSignup';
+import GoogleLoginButton from '../../components/google/Google.button';
 
 const SignUp: React.FC = () => {
   // Using Partial to make singUpError interface optional
   const [errors, setErrors] = useState<Partial<IsignUpFormErrors>>({});
 
   const [inputs, setInputs] = useState<ISignUp>({
-    _id: '',
     userName: '',
     fullName: '',
     password: '',
@@ -145,14 +145,9 @@ const SignUp: React.FC = () => {
             <div className="flex-1 h-px bg-gray-400" />
           </div>
 
-          <button
-            className="flex items-center justify-center bg-white text-black font-bold py-2 px-4 rounded shadow hover:bg-blue-400 mt-2 w-full border border-slate-700"
-            // onClick={handleGoogleSignUp}
-            disabled={loading}
-          >
-            <img src="../google.png" alt="Google logo" className="w-5 h-5 mr-2" />
-            {loading ? <span className="loading loading-spinner"></span> : 'Sign Up with Google'}
-          </button>
+          <div className="flex items-center justify-center text-black font-bold py-2 rounded shadow ">
+            <GoogleLoginButton />
+          </div>
         </form>
       </div>
     </div>
@@ -161,60 +156,4 @@ const SignUp: React.FC = () => {
 
 export default SignUp;
 
-// STARTER CODE FOR THIS FILE:
-// import GenderCheckBox from './GenderCheckBox';
 
-// const SignUp = () => {
-//   return (
-//     <div className="flex flex-col items-center justify-center min-w-96 mx-auto ">
-//       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
-//         <h1 className="text-3xl font-semibold text-center text-gray-300">
-//           Sign Up <span className="text-blue-login">ChatApp</span>
-//         </h1>
-
-//         <form>
-//           <div>
-//             <label className="label p-2">
-//               <span className="text-base label-text text-white opacity-70">Full name</span>
-//             </label>
-//             <input type="text" placeholder="e.g. John Doe" className="w-full input input-bordered h-10 " />
-//           </div>
-
-//           <div>
-//             <label className="label p-2">
-//               <span className="text-base label-text text-white opacity-70">User name</span>
-//             </label>
-//             <input type="text" placeholder="e.g. John" className="w-full input input-bordered h-10 " />
-//           </div>
-
-//           <div>
-//             <label className="label">
-//               <span className="text-base label-text text-white opacity-70">Password</span>
-//             </label>
-//             <input type="password" placeholder="Enter Password" className="w-full input input-bordered h-10" />
-//           </div>
-
-//           <div>
-//             <label className="label">
-//               <span className="text-base label-text text-white opacity-70">Confirm Password</span>
-//             </label>
-//             <input type="password" placeholder="Confirm Password" className="w-full input input-bordered h-10" />
-//           </div>
-
-//           {/*GENDER CHECKBOX GOES HEAR */}
-//           <GenderCheckBox />
-
-//           <a href="#" className="text-sm hover:underline text-white opacity-70 hover:text-black transition duration-700 mt-2 inline-block">
-//             Alredy have an account?
-//           </a>
-
-//           <div>
-//             <button className="btn btn-block btn-sm mt-2 border border-slate-700">Sign Up</button>
-//           </div>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default SignUp;
