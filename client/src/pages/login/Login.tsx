@@ -5,6 +5,7 @@ import { ILogin } from '../../interfaces/login/login.interface';
 import { loginSchema } from '../../zod/zod.login';
 import { loginFormErrors } from '../../interfaces/login/loginError.interfaces';
 import useLogin from '../../hooks/useLogin';
+import GoogleLoginButton from '../../components/google/Google.button';
 
 const Login: React.FC = () => {
   const [errors, setErrors] = useState<Partial<loginFormErrors>>({});
@@ -93,6 +94,16 @@ const Login: React.FC = () => {
             <button className="btn btn-block btn-sm mt-2" disabled={loading}>
               {loading ? <span className="loading loading-spinner "></span> : 'Login'}
             </button>
+          </div>
+
+          <div className="flex items-center justify-center my-4 w-full">
+            <div className="flex-1 h-px bg-gray-400" />
+            <span className="mx-2 text-white">OR</span>
+            <div className="flex-1 h-px bg-gray-400" />
+          </div>
+
+          <div className="flex items-center justify-center text-black font-bold py-2 rounded shadow ">
+            <GoogleLoginButton />
           </div>
         </form>
       </div>
