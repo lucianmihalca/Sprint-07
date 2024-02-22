@@ -66,15 +66,15 @@ export const login = async (req: Request, res: Response) => {
     } else {
       // Generate JWT token
       generateTokenAndSetCookie(user._id, res);
-      console.log("Respuesta enviada al cliente:", {
+      console.log('Respuesta enviada al cliente:', {
         _id: user._id,
         fullName: user.fullName,
         userName: user.userName,
         email: user.email,
-        profilePicture: user.profilePicture,
+        profilePicture: user.profilePicture
         // Otros campos que desees devolver
       });
-      
+
       res.status(200).json({
         _id: user._id,
         fullName: user.fullName,
@@ -109,7 +109,7 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 export const googleSignup = async (req: Request, res: Response) => {
   const { token } = req.body; // El token enviado desde el cliente
-  console.log("Token recibido:", token); // Loguear el token recibido
+  console.log('Token recibido:', token); // Loguear el token recibido
   try {
     const ticket = await client.verifyIdToken({
       idToken: token,
@@ -117,29 +117,30 @@ export const googleSignup = async (req: Request, res: Response) => {
     });
 
     const payload = ticket.getPayload();
-
+    if (!payload) throw new Error('Invalid payload from Google');
     // Aquí puedes manejar la lógica de verificación de usuario existente o creación de uno nuevo
     // Por ejemplo:
-    let user = await User.findOne({ googleId: payload?.sub });
-    console.log("Usuario encontrado o nuevo:", user); // Loguear información del usuario
+    let user = await User.findOne({ googleId: payload.sub });
+    console.log('Usuario encontrado o nuevo:', user); // Loguear información del usuario
 
     if (!user) {
       // Si el usuario no existe, crea uno nuevo
       user = new User({
-        fullName: payload?.name,
-        userName: payload?.email, // O generar uno basado en el nombre
-        googleId: payload?.sub,
-        email: payload?.email,
-        profilePicture: payload?.picture // URL de la imagen de perfil de Google
+        fullName: payload.name,
+        userName: payload.email, // O generar uno basado en el nombre
+        googleId: payload.sub,
+        email: payload.email,
+        profilePicture: payload.picture // URL de la imagen de perfil de Google
         // Configura los campos adicionales según tu modelo
       });
       await user.save();
-      console.log("Nuevo usuario creado:", user); // Loguear el nuevo usuario creado
+      console.log('Nuevo usuario creado:', user); // Loguear el nuevo usuario creado
     }
 
     // Genera un token para el usuario y lo devuelve
     generateTokenAndSetCookie(user._id, res);
-    console.log("Respuesta enviada al cliente:", { /* tu respuesta */ });
+    console.log('Respuesta enviada al cliente:');
+    
     return res.status(200).json({
       _id: user._id,
       fullName: user.fullName,

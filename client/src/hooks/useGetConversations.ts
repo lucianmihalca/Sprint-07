@@ -10,7 +10,12 @@ const useGetConversations = () => {
     const getConversations = async () => {
       setLoading(true);
       try {
-        const res = await fetch('/api/users');
+        const token = localStorage.getItem('token'); // Asume que el token se almacena con esta clave
+        const res = await fetch('/api/users', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         const data = await res.json();
         if (data.error) {
           throw new Error(data.error);
