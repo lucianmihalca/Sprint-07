@@ -14,15 +14,15 @@ function GoogleLoginButton() {
     const token = credentialResponse?.credential;
     if (token) {
       try {
-        const response = await fetch('http://localhost:3000/api/auth/google', {
+        const response = await fetch('/api/auth/google', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ token })
         });
-
+        const data = await response.json();
         if (!response.ok) throw new Error('Error en la autenticación con Google');
 
-        const data = await response.json();
+        localStorage.setItem('token', data.token); 
         setAuthUser(data); // Actualiza el estado global con la información del usuario
         navigate('/'); // Navega a la página de inicio o dashboard
       } catch (error) {
