@@ -208,7 +208,7 @@ npm run dev
 > [!NOTE]
 >
 > 3.  ⚡️ logOut (Post)
-
+>
 > - **Endpoint:** /logout (GET)
 > - **Descripción:** Crea una nueva instancia de logOut
 > - **Respuestas:**
@@ -220,7 +220,7 @@ npm run dev
 > [!NOTE]
 >
 > 4.  ⚡️ sendMessage (Post)
-
+>
 > - **Endpoint:** /send/id (POST)
 > - **Descripción:** Crea una nueva instancia de message
 > - **Respuestas:**
@@ -232,7 +232,7 @@ npm run dev
 > [!NOTE]
 >
 > 5.  ⚡️ getMessage (Get)
-
+>
 > - **Endpoint:** /:id (GET)
 > - **Descripción:** Devuelve un nuevo mensaje
 > - **Respuestas:**
@@ -244,7 +244,7 @@ npm run dev
 > [!NOTE]
 >
 > 6.  ⚡️ getUserForSidebar (Get)
-
+>
 > - **Endpoint:** / (GET)
 > - **Descripción:** Devuelve un listado de los usuarios
 > - **Respuestas:**
