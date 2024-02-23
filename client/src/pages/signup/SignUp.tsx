@@ -145,7 +145,7 @@ const SignUp: React.FC = () => {
             <div className="flex-1 h-px bg-gray-400" />
           </div>
 
-          <div className="flex items-center justify-center text-black font-bold py-2 rounded shadow ">
+          <div className="flex items-center justify-center text-black font-bold py-2 rounded shadow">
             <GoogleLoginButton />
           </div>
         </form>
